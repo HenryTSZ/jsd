@@ -172,10 +172,10 @@ const sleep = ms => new Promise(res => setTimeout(res, ms));
   .catch(e => console.log(e))
   .finally(async () => {
     // 当环境为GitHub action时创建action.js文件判断部署是否进行失败通知
-    if (process.env.XXX_ACTIONS == "true") {
+    if (process.env.GITHUB_ACTIONS == "true") {
       fs.writeFile(
         "action.js",
-        `var action = ` + process.env.action + `;action > 0 ? require("./sendNotify").sendNotify("云函数部署异常！请重试","点击通知，登入后查看详情",{ url: process.env.XXX_SERVER_URL + "/" + process.env.XXX_REPOSITORY + "/actions/runs/" + process.env.XXX_RUN_ID + "?check_suite_focus=true" }): ""`,
+        `var action = ` + process.env.action + `;action > 0 ? require("./sendNotify").sendNotify("云函数部署异常！请重试","点击通知，登入后查看详情",{ url: process.env.GITHUB_SERVER_URL + "/" + process.env.GITHUB_REPOSITORY + "/actions/runs/" + process.env.GITHUB_RUN_ID + "?check_suite_focus=true" }): ""`,
         "utf8",
         function (error) {
           if (error) {
