@@ -1,18 +1,16 @@
 # 每3天的23:50分清理一次日志(互助码不清理，proc_file.sh对该文件进行了去重)
-50 23 */3 * * find /scripts/logs -name '*.log' | grep -v 'sharecode' | xargs rm -rf
+50 23 */3 * * find /scripts/logs -name '*.log' | grep -v 'sharecodeCollection' | xargs rm -rf
+#收集助力码
+30 * * * * sh +x /scripts/docker/auto_help.sh collect |ts >> /scripts/logs/auto_help_collect.log 2>&1
 
 ##############短期活动##############
 
-#京东国际盲盒活动时间】2021年02月23日 起至 2021年03月31日 18:00:00
-5 7,12,23 * * * node /scripts/jd_global_mh.js |ts >> /scripts/logs/jd_global_mh.log 2>&1
-#环球挑战赛 第二季(活动时间：2021-03-08 至 2021-03-31)
-35 6,22 * * * node /scripts/jd_global.js |ts >> /scripts/logs/jd_global.log 2>&1
 #京东极速版红包(活动时间：2021-3-8至2021-3-25)
 15 0,23 * * * node /scripts/jd_speed_redpocke.js |ts >> /scripts/logs/jd_speed_redpocke.log 2>&1
 #女装盲盒 活动时间：2021-3-8至2021-3-20
 5 1,23 * * * node /scripts/jd_nzmh.js |ts >> /scripts/logs/jd_nzmh.log 2>&1
-#超级直播间红包雨
-30,31 20-23/1 9,12 3 * node /scripts/jd_live_redrain.js |ts >> /scripts/logs/jd_live_redrain.log 2>&1
+
+
 ##############长期活动##############
 # 签到
 3 0,18 * * * cd /scripts && node jd_bean_sign.js |ts >> /scripts/logs/jd_bean_sign.log 2>&1
@@ -116,4 +114,4 @@
 23 5,23 * * * node /scripts/jd_jxd.js |ts >> /scripts/logs/jd_jxd.log 2>&1
 
 # 必须要的默认定时任务请勿删除
-47 18 * * * docker_entrypoint.sh |ts >> /scripts/logs/default_task.log 2>&1
+14 21 * * * docker_entrypoint.sh |ts >> /scripts/logs/default_task.log 2>&1
