@@ -52,7 +52,7 @@ const JD_API_HOST = 'https://api.m.jd.com/', actCode = 'lucky-box-001';
   for (let i = 0; i < cookiesArr.length; i++) {
     if (cookiesArr[i]) {
       cookie = cookiesArr[i];
-      $.UserName = decodeURIComponent(cookie.match(/pt_pin=(.+?);/) && cookie.match(/pt_pin=(.+?);/)[1])
+      $.UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1])
       $.index = i + 1;
       $.isLogin = true;
       $.nickName = '';
@@ -113,7 +113,7 @@ async function getHome(info = false) {
             data = JSON.parse(data);
             if (data['code'] === '0') {
               const {myLuckyBox, luckyBoxList, rewardBagList} = data.result.data
-              let beanBox = luckyBoxList.filter(vo => vo.boxMaterials.findIndex(bo => bo.title === '京豆') > -1)
+              let beanBox = luckyBoxList.filter(vo => vo.boxMaterials.findIndex(bo => !!bo && bo.title === '京豆') > -1)
               if (beanBox.length) {
                 beanBox = beanBox[0]
                 if (beanBox['orderNo'] !== '' && beanBox['openRecId'] !== '') {
@@ -310,7 +310,7 @@ function taskUrl(function_id, body = {}) {
   function getSign(data) {
     let t = +new Date()
 
-    return {sealsTs: t, seals: $.md5(`${data.taskId}${data.inviterPin?data.inviterPin:''}${t}hbpt2020`)}
+    return {sealsTs: t, seals: $.md5(`${data.taskId}${data.inviterPin?data.inviterPin:''}${t}Ea6YXT`)}
   }
   if(body['taskId']) {
     body = {...body, ...getSign(body)}

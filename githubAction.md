@@ -31,7 +31,9 @@
 | `PUSH_PLUS_USER`  |                         pushplus推送                         | 非必须 | 一对多推送的“群组编码”（一对多推送下面->您的群组(如无则新建)->群组编码）注:(1、需订阅者扫描二维码 2、如果您是创建群组所属人，也需点击“查看二维码”扫描绑定，否则不能接受群组消息推送)，只填`PUSH_PLUS_TOKEN`默认为一对一推送 |
 |  `TG_PROXY_HOST`  |                      Telegram 代理的 IP                      | 非必须 | 代理类型为 http。例子：http代理 http://127.0.0.1:1080 则填写 127.0.0.1 |
 |  `TG_PROXY_PORT`  |                     Telegram 代理的端口                      | 非必须 | 例子：http代理 http://127.0.0.1:1080 则填写 1080             |
+|  `TG_PROXY_AUTH`  |                     Telegram 代理的认证参数              | 非必须 | 代理的认证参数     |
 |  `TG_API_HOST`  |                      Telegram api自建的反向代理地址              | 非必须 | 例子：反向代理地址 http://aaa.bbb.ccc 则填写 aaa.bbb.ccc [简略搭建教程](https://shimo.im/docs/JD38CJDQtYy3yTd8/read)     |
+
 
 ##### 互助码类环境变量
 
@@ -61,6 +63,9 @@
 | `JD_BEAN_SIGN_NOTIFY_SIMPLE` |      京东多合一签到             | 非必须 | `jd_bean_sign.js`脚本运行后推送签到结果简洁版通知，<br>默认推送签到简洁结果，填`true`表示推送简洁通知，[效果图](./icon/bean_sign_simple.jpg) |
 |     `PET_NOTIFY_CONTROL`     |     东东萌宠<br>推送开关     | 非必须 | 控制京东萌宠是否静默运行,<br>`false`为否(发送推送通知消息),`true`为是(即：不发送推送通知消息) |
 |    `FRUIT_NOTIFY_CONTROL`    |     东东农场<br>推送开关     | 非必须 | 控制京东农场是否静默运行,<br>`false`为否(发送推送通知消息),`true`为是(即：不发送推送通知消息) |
+|    `CASH_NOTIFY_CONTROL`    |     京东领现金<br>推送开关     | 非必须 | 控制京东领现金是否静默运行,<br>`false`为否(发送推送通知消息),`true`为是(即：不发送推送通知消息) |
+|    `DDQ_NOTIFY_CONTROL`    |     点点券<br>推送开关     | 非必须 | 控制点点券是否静默运行,<br>`false`为否(发送推送通知消息),`true`为是(即：不发送推送通知消息) |
+|    `JDZZ_NOTIFY_CONTROL`    |     京东赚赚小程序<br>推送开关     | 非必须 | 控制京东赚赚小程序是否静默运行,<br>`false`为否(发送推送通知消息),`true`为是(即：不发送推送通知消息) |
 |    `JD_JOY_REWARD_NOTIFY`    |  宠汪汪<br>兑换京豆推送开关  | 非必须 | 控制`jd_joy_reward.js`脚本是否静默运行,<br>`false`为否(发送推送通知消息),`true`为是(即：不发送推送通知消息) |
 |       `JOY_FEED_COUNT`       |        宠汪汪喂食数量        | 非必须 | 控制`jd_joy_feedPets.js`脚本喂食数量,可以填的数字10,20,40,80,其他数字不可. |
 |       `JOY_HELP_FEED`        |       宠汪汪帮好友喂食       | 非必须 | 控制`jd_joy_steal.js`脚本是否给好友喂食,`false`为否,`true`为是(给好友喂食) |
@@ -68,7 +73,7 @@
 |       `JOY_TEAM_LEVEL`       | 宠汪汪<br>参加什么级别的赛跑 | 非必须 | 控制`jd_joy.js`脚本参加几人的赛跑,可选数字为`2`,`10`,`50`，<br>其中2代表参加双人PK赛，10代表参加10人突围赛，<br>50代表参加50人挑战赛(注：此项功能在`JOY_RUN_FLAG`为true的时候才生效)，<br>如若想设置不同账号参加不同类别的比赛则用&区分即可(如下三个账号：`2&10&50`) |
 |       `JOY_RUN_NOTIFY`       | 宠汪汪<br>宠汪汪赛跑获胜后是否推送通知 | 非必须 | 控制`jd_joy.js`脚本宠汪汪赛跑获胜后是否推送通知，<br>`false`为否(不推送通知消息),`true`为是(即：发送推送通知消息)<br> |
 |    `JOY_RUN_HELP_MYSELF`      |    宠汪汪<br>赛跑自己账号内部互助     | 非必须 | 输入`true`为开启内部互助 |
-|     `JD_JOY_REWARD_NAME`     |  宠汪汪<br>积分兑换多少京豆  | 非必须 | 目前可填值为`20`或者`500`,脚本默认`20`,`0`表示不兑换京豆     |
+|     `JD_JOY_REWARD_NAME`     |  宠汪汪<br>积分兑换多少京豆  | 非必须 | 目前可填值为`20`或者`500`,脚本默认`0`,`0`表示不兑换京豆     |
 |    `MARKET_COIN_TO_BEANS`    |    东东超市<br>兑换京豆数量    | 非必须 | 控制`jd_blueCoin.js`兑换京豆数量,<br>可输入值为`20`或者`1000`的数字或者其他商品的名称,例如`碧浪洗衣凝珠` |
 |    `MARKET_REWARD_NOTIFY`    |  东东超市<br>兑换奖品推送开关  | 非必须 | 控制`jd_blueCoin.js`兑换奖品成功后是否静默运行,<br>`false`为否(发送推送通知消息),`true`为是(即：不发送推送通知消息) |
 |    `JOIN_PK_TEAM`            |    东东超市<br>自动参加PK队伍    | 非必须 | 每次pk活动参加作者创建的pk队伍,`true`表示参加,`false`表示不参加 |

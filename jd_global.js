@@ -57,7 +57,7 @@ $.invites = [];
   for (let i = 0; i < cookiesArr.length; i++) {
     if (cookiesArr[i]) {
       cookie = cookiesArr[i];
-      $.UserName = decodeURIComponent(cookie.match(/pt_pin=(.+?);/) && cookie.match(/pt_pin=(.+?);/)[1])
+      $.UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1])
       $.index = i + 1;
       $.isLogin = true;
       $.nickName = '';
@@ -183,7 +183,7 @@ async function getTask() {
               for (let vo of task) {
                 if (vo['taskName'] === '每日邀请好友') {
                   // console.log(`您的好友助力码为 ${vo['jingCommand']['keyOpenapp'].match(/masterPin":"(.*)","/)[1]}`)
-                  console.log(`\n【京东账号${$.index}（${$.nickName || $.UserName}）的${$.name}好友互助码】${vo['jingCommand']['keyOpenapp'].match(/masterPin":"(.*)","/)[1]}\n`);
+                  console.log(`\n【京东账号${$.index}（${$.UserName}）的${$.name}好友互助码】${vo['jingCommand']['keyOpenapp'].match(/masterPin":"(.*)","/)[1]}\n`);
                   $.invites.push(vo['jingCommand']['keyOpenapp'].match(/masterPin":"(.*)","/)[1]);
                 }
                 if (['70', '50', '30', '40'].includes(vo['taskType'])) {
@@ -381,7 +381,7 @@ function taskUrl(function_id, body = {}) {
   function getSign(data) {
     let t = +new Date()
 
-    return {sealsTs: t, seals: $.md5(`${data.taskId}${data.inviterPin?data.inviterPin:''}${t}hbpt2020`)}
+    return {sealsTs: t, seals: $.md5(`${data.taskId}${data.inviterPin?data.inviterPin:''}${t}Ea6YXT`)}
   }
   if(body['taskId']) {
     body = {...body, ...getSign(body)}
