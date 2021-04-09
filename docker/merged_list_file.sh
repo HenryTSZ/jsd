@@ -4,28 +4,27 @@
 30 * * * * sh +x /scripts/docker/auto_help.sh collect |ts >> /scripts/logs/auto_help_collect.log 2>&1
 
 ##############短期活动##############
-
-#京东极速版红包(活动时间：2021-3-8至2021-3-25)
-45 0,23 * * *  . /scripts/docker/auto_help.sh export > /scripts/logs/auto_help_export.log && node  /scripts/jd_speed_redpocke.js |ts >> /scripts/logs/jd_speed_redpocke.log 2>&1
-#女装盲盒 活动时间：2021-03-22到2021-03-31
+#女装盲盒 活动时间：2021-04-1到2021-04-31
 35 1,23 * * *  . /scripts/docker/auto_help.sh export > /scripts/logs/auto_help_export.log && node  /scripts/jd_nzmh.js |ts >> /scripts/logs/jd_nzmh.log 2>&1
+
+
+#京东极速版红包(活动时间：2021-5-5至2021-5-5)
+45 0,23 * * *  . /scripts/docker/auto_help.sh export > /scripts/logs/auto_help_export.log && node  /scripts/jd_speed_redpocke.js |ts >> /scripts/logs/jd_speed_redpocke.log 2>&1
+
 #超级直播间红包雨(活动时间不定期，出现异常提示请忽略。红包雨期间会正常)
-30,31 20-23/1 * * *  . /scripts/docker/auto_help.sh export > /scripts/logs/auto_help_export.log && node  /scripts/jd_live_redrain.js |ts >> /scripts/logs/jd_live_redrain.log 2>&1
-#京东国际盲盒活动时间】2021年02月23日 起至 2021年03月31日 18:00:00
-35 7,12,23 * * *  . /scripts/docker/auto_help.sh export > /scripts/logs/auto_help_export.log && node  /scripts/jd_global_mh.js |ts >> /scripts/logs/jd_global_mh.log 2>&1
-#环球挑战赛 第二季(活动时间：2021-03-08 至 2021-03-31)
-5 6,22 * * *  . /scripts/docker/auto_help.sh export > /scripts/logs/auto_help_export.log && node  /scripts/jd_global.js |ts >> /scripts/logs/jd_global.log 2>&1
+1,31 0-23/1 * * *  . /scripts/docker/auto_help.sh export > /scripts/logs/auto_help_export.log && node  /scripts/jd_live_redrain.js |ts >> /scripts/logs/jd_live_redrain.log 2>&1
 
 #5G超级盲盒 活动时间：2021-03-19到2021-04-30
 10 0,1-23/4 * * *  . /scripts/docker/auto_help.sh export > /scripts/logs/auto_help_export.log && node  /scripts/jd_mohe.js |ts >> /scripts/logs/jd_mohe.log 2>&1
-
+#京东手机狂欢城活动，每日可获得30+以上京豆（其中20京豆是往期奖励，需第一天参加活动后，第二天才能拿到）活动时间: 2021-4-1至2021-4-20
+0 0-18/6,19-23/1 * * *  . /scripts/docker/auto_help.sh export > /scripts/logs/auto_help_export.log && node  /scripts/jd_carnivalcity.js |ts >> /scripts/logs/jd_carnivalcity.log 2>&1
 ##############长期活动##############
 # 签到
 7 0,17 * * * cd /scripts &&  . /scripts/docker/auto_help.sh export > /scripts/logs/auto_help_export.log && node  jd_bean_sign.js |ts >> /scripts/logs/jd_bean_sign.log 2>&1
 # 东东超市兑换奖品
 0,30 0 * * *  . /scripts/docker/auto_help.sh export > /scripts/logs/auto_help_export.log && node  /scripts/jd_blueCoin.js |ts >> /scripts/logs/jd_blueCoin.log 2>&1
 # 摇京豆
-6 0 * * *  . /scripts/docker/auto_help.sh export > /scripts/logs/auto_help_export.log && node  /scripts/jd_club_lottery.js |ts >> /scripts/logs/jd_club_lottery.log 2>&1
+6 0,23 * * *  . /scripts/docker/auto_help.sh export > /scripts/logs/auto_help_export.log && node  /scripts/jd_club_lottery.js |ts >> /scripts/logs/jd_club_lottery.log 2>&1
 # 东东农场
 15 6-18/6 * * *  . /scripts/docker/auto_help.sh export > /scripts/logs/auto_help_export.log && node  /scripts/jd_fruit.js |ts >> /scripts/logs/jd_fruit.log 2>&1
 # 宠汪汪
@@ -43,13 +42,13 @@
 # 京东种豆得豆
 10 7-22/1 * * *  . /scripts/docker/auto_help.sh export > /scripts/logs/auto_help_export.log && node  /scripts/jd_plantBean.js |ts >> /scripts/logs/jd_plantBean.log 2>&1
 # 京东全民开红包
-12 1 * * *  . /scripts/docker/auto_help.sh export > /scripts/logs/auto_help_export.log && node  /scripts/jd_redPacket.js |ts >> /scripts/logs/jd_redPacket.log 2>&1
+12 0-23/4 * * *  . /scripts/docker/auto_help.sh export > /scripts/logs/auto_help_export.log && node  /scripts/jd_redPacket.js |ts >> /scripts/logs/jd_redPacket.log 2>&1
 # 进店领豆
 6 0 * * *  . /scripts/docker/auto_help.sh export > /scripts/logs/auto_help_export.log && node  /scripts/jd_shop.js |ts >> /scripts/logs/jd_shop.log 2>&1
 # 京东天天加速
 28 */3 * * *  . /scripts/docker/auto_help.sh export > /scripts/logs/auto_help_export.log && node  /scripts/jd_speed.js |ts >> /scripts/logs/jd_speed.log 2>&1
 # 东东超市
-31 1-23/5 * * *  . /scripts/docker/auto_help.sh export > /scripts/logs/auto_help_export.log && node  /scripts/jd_superMarket.js |ts >> /scripts/logs/jd_superMarket.log 2>&1
+31 0,1-23/2 * * *  . /scripts/docker/auto_help.sh export > /scripts/logs/auto_help_export.log && node  /scripts/jd_superMarket.js |ts >> /scripts/logs/jd_superMarket.log 2>&1
 # 取关京东店铺商品
 45 23 * * *  . /scripts/docker/auto_help.sh export > /scripts/logs/auto_help_export.log && node  /scripts/jd_unsubscribe.js |ts >> /scripts/logs/jd_unsubscribe.log 2>&1
 # 京豆变动通知
@@ -118,4 +117,4 @@
 13 8,16,20 * * *  . /scripts/docker/auto_help.sh export > /scripts/logs/auto_help_export.log && node  /scripts/jd_jxd.js |ts >> /scripts/logs/jd_jxd.log 2>&1
 
 # 必须要的默认定时任务请勿删除
-55 10 * * * docker_entrypoint.sh |ts >> /scripts/logs/default_task.log 2>&1
+27 20 * * * docker_entrypoint.sh |ts >> /scripts/logs/default_task.log 2>&1
